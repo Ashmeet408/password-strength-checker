@@ -1,12 +1,8 @@
 stored = []
-common_passwords = {"correcthorsebatterystaple", 
-                    "123456789012345", 
-                    "passwordpassword", 
-                    "qwertyuiopasdfgh", 
-                    "iloveyouiloveyou", 
-                    "letmeinletmein12", 
-                    "adminadminadmin1",
-                    "password123"}
+common_passwords = set()
+with open("common_passwords.txt") as p:
+    for line in p:
+        common_passwords.add(line.strip().lower())
 
 password = input("Enter Password: ")
 
@@ -15,7 +11,7 @@ if len(password) < 15:
 if len(password) >= 65:
     stored.append("Password is too long. Password must be at most 64 characters long.")
 if password.lower() in common_passwords:
-    stored.append("Password is a common password. Please try again.")
+    stored.append("Password entered is a common password. Please try again.")
 
 if len(stored) == 0:
     print("PASS")
