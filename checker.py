@@ -1,12 +1,12 @@
 stored = []
-common_passwords = ["correcthorsebatterystaple", 
+common_passwords = {"correcthorsebatterystaple", 
                     "123456789012345", 
                     "passwordpassword", 
                     "qwertyuiopasdfgh", 
                     "iloveyouiloveyou", 
                     "letmeinletmein12", 
                     "adminadminadmin1",
-                    "password123"]
+                    "password123"}
 
 password = input("Enter Password: ")
 
