@@ -10,7 +10,7 @@ The code is formatted this way in reference to the NIST SP 800-63B Rev 4. This i
 
 ## The Blocklist
 
-The list of the common passwords is derived from SecLists' top 100,000 passwords. It is then filtered from a file of 100,000 passwords to passwords of 15+ characters by `filter_list.py`. Of the 100,000 passwords only 72 were 15 characters or longer. There are also a handful of passwords added by hand. It is filtered because the entries of passwords less than 15 characters would never fire. Any passwords under 15 characters gets rejected by the minimum length check. The blocklist is in place in case there is no internet and the password is not checked with HIBP.
+The list of the common passwords is derived from SecLists' top 100,000 passwords. It is then filtered from a file to passwords of 15+ characters by `filter_list.py`. Of the 100,000 passwords only 72 were 15 characters or longer. There are also a handful of passwords added by hand. It is filtered because the entries of passwords less than 15 characters would never fire. Any passwords under 15 characters gets rejected by the minimum length check. The blocklist is in place in case there is no internet and the password is not checked with HIBP.
 
 ## How The Breach Check Works
 
