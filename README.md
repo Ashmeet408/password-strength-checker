@@ -6,7 +6,11 @@ This code checks the strength of your password against a few checks being length
 
 ## Why It's Built This Way
 
-The code is formatted this way in reference to the NIST SP 800-63B Rev 4. This is the US National Institute of Standards and Technology. The checks of the code are if it is at least 15 characters long, at most 64 characters, and if it is a common password. The code also checks if your entered password has been pwned against the website Have I Been Pwned. There is also no restriction on uppercase/digit/symbol. The spec prohibits composition rules because it can lead to a password like "Password1!". Capitalizing the first letter is very common and so is using the exclamation point as the symbol.
+The code is formatted this way in reference to the NIST SP 800-63B Rev 4. This is the US National Institute of Standards and Technology. The checks of the code are if it is at least 15 characters long, at most 64 characters, and if it is a common password. The code also checks if your entered password has been pwned against the website Have I Been Pwned. There is also no restriction on uppercase/digit/symbol. The spec prohibits composition rules because it can lead to a password like "Password1!". Capitalizing the first letter is very common and so is using the exclamation point as the symbol. 
+
+## The Blocklist
+
+The list of the common passwords is derived from SecLists' top 100,000 passwords. It is then filtered from a file of 100,000 passwords to passwords of 15+ characters by `filter_list.py`. Of the 100,000 passwords only 72 were 15 characters or longer. There are also a handful of passwords added by hand. It is filtered because the entries of passwords less than 15 characters would never fire. Any passwords under 15 characters gets rejected by the minimum length check. The blocklist is in place in case there is no internet and the password is not checked with HIBP.
 
 ## How The Breach Check Works
 
@@ -37,4 +41,4 @@ PASS
 
 ## What I Learned
 
-I learned a lot with this being my first personal project. I learned the importance of a .gitignore file and to have files store information and to call that file instead hardcoding everything. This is done so the blocklist file can grow to 100,000 entries without touching a line of code. I learned to use a set over a list because the list has O(n) and a set is O(1) when it comes to a lookup. I learned how to turn an entered passcode into its SHA-1 and how to compare it with breached passwords without giving away said password. I learned how to access the internet within the code and also to make sure there is a check in case internet access is not available.
+I learned a lot with this being my first personal project. I learned the importance of a .gitignore file and to have files store information and to call that file instead hardcoding everything. One file being called is the blocklist file where I initially had 7 passwords, but was updated to 79 passwords. I learned to use a set over a list because the list has O(n) and a set is O(1) when it comes to a lookup. I learned how to turn an entered passcode into its SHA-1 and how to compare it with breached passwords without giving away said password. I learned how to access the internet within the code and also to make sure there is a check in case internet access is not available.
